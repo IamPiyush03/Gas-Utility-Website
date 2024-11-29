@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<div class="container">
+    <h2 class="header-title">Your Service Requests</h2>
+    <div class="request-list">
+        {% if requests %}
+            <ul>
+                {% for request in requests %}
+                    <li class="request-item">
+                        <span class="service-type">{{ request.service_type }}</span>
+                        <span class="status">{{ request.status }}</span>
+                        <span class="date"> (Submitted on: {{ request.created_at|date:"F j, Y" }})</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="no-requests">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>No service requests found.</span>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-title {
+        color: #007bff;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .request-list {
+        padding: 10px;
+    }
+
+    .request-item {
+        padding: 10px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        background-color: #ffffff;
+        transition: box-shadow 0.3s;
+    }
+
+    .request-item:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-type {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .status {
+        color: #28a745; /* Green for success */
+        font-weight: bold;
+    }
+
+    .date {
+        color: #6c757d; /* Gray for date */
+        font-size: 0.9em;
+    }
+
+    .no-requests {
+        text-align: center;
+        color: #dc3545; /* Red for no requests */
+        font-size: 18px;
+    }
+
+    .no-requests i {
+        font-size: 24px;
+        margin-right: 8px;
+    }
+</style>
+{% endblock %}
