@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-#hpm!7+zc#npkly+#ib_98%@uadidp4*55ozey3@$lcg*ahh9e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://gas-utility-website-1.onrender.com',]
+ALLOWED_HOSTS = ['gas-utility-website-1.onrender.com']
 
 
 # Application definition
